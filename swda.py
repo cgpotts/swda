@@ -67,14 +67,15 @@ class Metadata:
         header = next(csvreader)
         for row in csvreader:
             d = dict(list(zip(header, row)))
-            for key in ('conversation_no', 'length',
+            for key in ('conversation_no', 'from_caller', 'to_caller', 'length',
                         'from_caller_education', 'to_caller_education'):
                 d[key] = int(d[key])
             talk_day = d['talk_day']
             talk_year = int('19' + talk_day[:2])
             talk_month = int(talk_day[2:4])
             talk_day = int(talk_day[4:])                            
-            d['talk_day'] = datetime.datetime(year=talk_year, month=talk_month, day=talk_day)
+            d['talk_day'] = datetime.datetime(
+                year=talk_year, month=talk_month, day=talk_day)
             d['from_caller_birth_year'] = int(d['from_caller_birth_year'])
             d['to_caller_birth_year'] = int(d['to_caller_birth_year'])
             self.metadata[d['conversation_no']] = d
