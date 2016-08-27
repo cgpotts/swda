@@ -14,8 +14,8 @@ for moving through all of the `Transcript` or `Utterance` instances in it.
 
 
 __author__ = "Christopher Potts"
-__copyright__ = "Copyright 2011-, Christopher Potts"
 __version__ = "2.0"
+__license__ = "GNU general public license, version 2"
 __maintainer__ = "Christopher Potts"
 __email__ = "See the author's website"
 
