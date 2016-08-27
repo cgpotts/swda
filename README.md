@@ -29,8 +29,8 @@ Additional resources from that corpus:
 * [Experiment: Question acts and interrogative clauses in the SwDA](http://compprag.christopherpotts.net/swda-clausetyping.html)
 * [Analysis: Clustering words by tags in the SwDA](http://compprag.christopherpotts.net/swda-clustering.html)
 
-The current version of the code is compatible with Python 2 and Python 3.
-It's other external dependency is [NLTK](http://www.nltk.org/install.html), 
+The code in this repository is compatible with Python 2 and Python 3.
+Its only other external dependency is [NLTK](http://www.nltk.org/install.html), 
 with [the data installed](http://www.nltk.org/data.html)
 so that WordNet is available.
 
@@ -41,7 +41,7 @@ The code's `Transcript` objects model the individual files in the corpus.
 A `Transcript` object is built from a transcript filename and the corpus 
 metadata file:
 
-``python
+```python
 from swda import Transcript
 
 trans = Transcript('swda/sw00utt/sw_0001_4325.utt.csv', 'swda/swda-metadata.csv')
@@ -64,25 +64,40 @@ trans.talk_day.month
 
 trans.from_caller_sex
 'FEMALE'
-``
+```
 
 `Transcript` instances have many attributes:
 
-``python
-[a for a in dir(trans) if not a.startswith('_')]
-['conversation_no', 'from_caller_birth_year', 'from_caller_dialect_area', \
-'from_caller_education', 'from_caller_sex', 'header', 'length', 'metadata', \
-'prompt', 'ptd_basename', 'swda_filename', 'talk_day', 'to_caller_birth_year', \
-'to_caller_dialect_area', 'to_caller_education', 'to_caller_sex', \
-'topic_description', 'utterances']
-``
+```python
+for a in sorted([a for a in dir(trans) if not a.startswith('_')]):
+	print(a)
+
+conversation_no
+from_caller_birth_year
+from_caller_dialect_area
+from_caller_education
+from_caller_sex
+header
+length
+metadata
+prompt
+ptd_basename
+swda_filename
+talk_day
+to_caller_birth_year
+to_caller_dialect_area
+to_caller_education
+to_caller_sex
+topic_description
+utterances
+```
 
 
 ## `Utterance` objects
 
 These too have many attributes:
 
-``python
+```python
 utt = trans.utterances[19]
 
 utt.caller
@@ -120,7 +135,7 @@ utt.trees[0].pprint()
       (-NONE- 0)
       (S (NP-SBJ (PRP we)) (VP (MD can) (VP (VB start))))))
   (. .))'
-``
+```
 
 Because the trees often properly contain the utterance, they cannot be used to 
 gather word- or phrase-level statistics unless care is taken to restrict attention 
@@ -139,19 +154,20 @@ iterate through the entire corpus, gathering information as you go. `CorpusReade
 objects are built from just the root of the directory containing your csv files. 
 (It assumes that `swda-metadata.csv` is in the first directory below that root.)
 
-``python
+```python
 from swda import CorpusReader
 corpus = CorpusReader('swda')
-``
+```
+
 The two central methods for `CorpusReader` objects are `iter_transcripts`
 and `iter_utterances`. The method `iter_utterances` is basically an abbreviation 
 of the following nested loop:
 
-``python
+```python
 for trans in corpus.iter_transcripts():
     for utt in trans.utterances:
         yield utt
-``
+```
 
 For some illustrations, see `swda_functions.py`.
 
