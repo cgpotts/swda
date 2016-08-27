@@ -22,7 +22,7 @@ it includes Python classes that should make it easy to work with
 this merged resource.
 
 This project was originally part of my LSA Linguistic Institute 2011
-course [Computaitonal Pragmatics](http://compprag.christopherpotts.net/index.html). 
+course [Computational Pragmatics](http://compprag.christopherpotts.net/index.html). 
 Additional resources from that corpus:
 
 * [Corpus overview](http://compprag.christopherpotts.net/swda.html)
