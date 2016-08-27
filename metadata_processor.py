@@ -6,8 +6,17 @@ with Switchboard. If you have a copy of the Switchboard and you want more
 or different metadata, you can modify this file.
 """
 
+
+__author__ = "Christopher Potts"
+__copyright__ = "Copyright 2011-, Christopher Potts"
+__version__ = "2.0"
+__maintainer__ = "Christopher Potts"
+__email__ = "See the author's website"
+
+
 import csv
 import os
+
 
 def metadata2dict(filename, header, key_index=0):
     d = {}
