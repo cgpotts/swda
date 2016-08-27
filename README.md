@@ -3,7 +3,6 @@ Switchboard Dialog Act Corpus with Penn Treebank links
 
 ## Overview
 
-
 [The Switchboard Dialog Act Corpus](http://www.stanford.edu/~jurafsky/ws97/) (SwDA) extends
 the [Switchboard-1 Telephone Speech Corpus, Release 2](http://www.ldc.upenn.edu/Catalog/CatalogEntry.jsp?catalogId=LDC97S62) 
 with turn/utterance-level dialog-act tags. The tags summarize syntactic,
@@ -35,6 +34,14 @@ with [the data installed](http://www.nltk.org/data.html)
 so that WordNet is available.
 
 
+## Files
+
+* `swda.py`: the module for processing this corpus distribution
+* `swda.zip`: the corpus; needs to be unzipped
+* `swda_functions.py`: some simple examples aggregating informaton with `CorpusReader`s
+* `metadata_processor.py`: auxiliary processing file used to create `swda/swda-metadata.csv`
+
+
 ## `Transcript` objects
 
 The code's `Transcript` objects model the individual files in the corpus. 
@@ -62,6 +69,9 @@ trans.talk_day.year
 trans.talk_day.month
 3
 
+trans.from_caller
+1632
+
 trans.from_caller_sex
 'FEMALE'
 ```
@@ -73,6 +83,8 @@ for a in sorted([a for a in dir(trans) if not a.startswith('_')]):
 	print(a)
 
 conversation_no
+conversation_no
+from_caller
 from_caller_birth_year
 from_caller_dialect_area
 from_caller_education
@@ -84,6 +96,7 @@ prompt
 ptd_basename
 swda_filename
 talk_day
+to_caller
 to_caller_birth_year
 to_caller_dialect_area
 to_caller_education
@@ -95,7 +108,7 @@ utterances
 
 ## `Utterance` objects
 
-These too have many attributes:
+These have many attributes and methods. Some examples:
 
 ```python
 utt = trans.utterances[19]
@@ -170,6 +183,7 @@ for trans in corpus.iter_transcripts():
 ```
 
 For some illustrations, see `swda_functions.py`.
+
 
 ## For more
 
