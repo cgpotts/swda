@@ -59,7 +59,7 @@ def count_matches():
                 d['match'] += 1
             else: 
                 d['mismatch'] += 1
-    print("match: {} ({} percent)".format(d['match'], d['match']/float(sum(d.values())))
+    print("match: {} ({} percent)".format(d['match'], d['match']/float(sum(d.values()))))
 
 ######################################################################
 
