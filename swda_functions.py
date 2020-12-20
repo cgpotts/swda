@@ -79,4 +79,4 @@ def act_tags_and_rootlabels():
     corpus = CorpusReader('swda')    
     for utt in corpus.iter_utterances(display_progress=True):
         if utt.tree_is_perfect_match():
-            csvwriter.writerow([utt.act_tag, utt.damsl_act_tag(), utt.trees[0].node])
+            csvwriter.writerow([utt.act_tag, utt.damsl_act_tag(), utt.trees[0].label()])
