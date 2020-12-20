@@ -13,6 +13,7 @@ __email__ = "See the author's website"
 
 ######################################################################
 
+import csv
 from collections import defaultdict
 from operator import itemgetter
 from swda import CorpusReader
