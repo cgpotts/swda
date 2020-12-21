@@ -80,3 +80,21 @@ def act_tags_and_rootlabels():
     for utt in corpus.iter_utterances(display_progress=True):
         if utt.tree_is_perfect_match():
             csvwriter.writerow([utt.act_tag, utt.damsl_act_tag(), utt.trees[0].label()])
+
+######################################################################
+
+def act_tags_and_text():
+    """
+    Create a CSV file named swda-actags-and-text.csv in
+    which each utterance utt has its own row consisting of
+
+      utt.damsl_act_tag(), and clean-text utterance
+
+    This data can be used for training a speechAct classifier
+    """
+    csvwriter = csv.writer(open('swda-actags-and-text.csv', 'wt'))
+    csvwriter.writerow(['DamslActTag', 'Text'])
+    corpus = CorpusReader('swda')
+    for utt in corpus.iter_utterances(display_progress=True):
+        clean_words = utt.text_words(filter_disfluency=True)
+        csvwriter.writerow([utt.damsl_act_tag(), " ".join(clean_words)])
