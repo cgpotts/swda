@@ -92,7 +92,7 @@ def act_tags_and_text():
 
     This data can be used for training a speechAct classifier
     """
-    csvwriter = csv.writer(open('swda-actags-and-text.csv', 'wt'))
+    csvwriter = csv.writer(open('swda-acttags-and-text.csv', 'wt'))
     csvwriter.writerow(['DamslActTag', 'Text'])
     corpus = CorpusReader('swda')
     for utt in corpus.iter_utterances(display_progress=True):
